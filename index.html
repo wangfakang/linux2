@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Linux2 by wangfakang</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Linux2</h1>
+        <p class="header">linux base study</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/wangfakang/linux2/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/wangfakang/linux2/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/wangfakang/linux2">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/wangfakang">wangfakang</a></p>
+
+
+      </header>
+      <section>
+        <p><code>linux的基础知识</code></p>
+
+<h1>
+<a id="一安装软件" class="anchor" href="#%E4%B8%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>一.安装软件</h1>
+
+<p>使用本地  </p>
+
+<ul>
+<li>1.首先进入su模式<br>
+</li>
+<li>2.cd /  进入根目录<br>
+</li>
+<li>3.mount /dev/cdrom  /mnt  把设备文件下的cdrom挂载到mnt上<br>
+</li>
+<li>4.若是首次安装软件则转入5否则转入7<br>
+</li>
+<li>5.cd /etc/yum.repos.d  进入配置文件目录下的yum.repos.d<br>
+</li>
+<li>6.创建一个以 *.repo 为后缀的文件 在里面写入<br>
+</li>
+</ul>
+
+<pre><code>[serid]    
+name=wang   
+baseurl=file:///mnt   
+</code></pre>
+
+<p>保存并退出</p>
+
+<p>当然也可以使用其自带的yum仓库［源］进行安装．<br>
+如果是ubuntu的话直接使用apt-get 进行安装．    </p>
+
+<p>7.使用yum serch  *(想要装入的软件名称)  此步进行软件搜索<br>
+8.在第7步，找到了自己想要装入的软件之后使用yum  install *（软件全称）根据提示进行安装（相当于自定义安装）<br>
+若使用yum install *（软件全称） -y  相当于快速安装    </p>
+
+<h1>
+<a id="二编写c程序及运行" class="anchor" href="#%E4%BA%8C%E7%BC%96%E5%86%99c%E7%A8%8B%E5%BA%8F%E5%8F%8A%E8%BF%90%E8%A1%8C" aria-hidden="true"><span class="octicon octicon-link"></span></a>二.编写C程序及运行</h1>
+
+<ul>
+<li>1.使用touch 命令创建文件名（如touch main.c）则转入2 或是使用vi mian.c直接创建并进入编辑则转入3<br>
+</li>
+<li>2.在使用vi 文件名（如  vi main.c）打开并编辑<br>
+</li>
+<li>3.使用gcc  -c  main.c 进行编译会生成main.o二进制文件  在进行链接 使用gcc -o main main.c 此时会生成可执行文件main<br>
+</li>
+<li>4.使用 ./main便可以运行相应的程序<br>
+</li>
+</ul>
+
+<h1>
+<a id="三vi命令的使用" class="anchor" href="#%E4%B8%89vi%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>三.vi命令的使用</h1>
+
+<ul>
+<li>1.vi有三个模式<br>
+按Esc时会进入命令模式<br>
+</li>
+</ul>
+
+<p>按i或a会进入插入模式    </p>
+
+<p>当使用I时会进入当前行的最左边 小写的i会进入当前光标的左边插入   </p>
+
+<p>按 ： 会进入末行模式<br>
+当使用大写A进入当前行的最右边  小写的a进入光标会向右移一个   </p>
+
+<ul>
+<li><p>2.复制与粘贴<br>
+在命令模式下使用<br>
+yy会复制相应的内容 也可以使用  n yy 表示复制当前几行<br>
+p命令是进行粘贴    </p></li>
+<li>
+<p>3.删除与替换<br>
+在命令模式下使用    </p>
+
+<p>使用r命令是替换当前光标所指向的内容<br>
+使用dd命令是删除当前的一行<br>
+n dd 删除当前n行    </p>
+
+<p>使用dw 命令是删除一个单词  单词是用空格区辨的   </p>
+</li>
+<li>
+<p>4.设置行号<br>
+在命令模式下使用    </p>
+
+<p>使用 ：set nu 命令是当前文档加上行号<br>
+使用 ：set nonu 命令是去掉当前文档加上行号   </p>
+</li>
+<li><p>5.文档的保存   </p></li>
+</ul>
+
+<p>使用 ：wq命令是保存并退出<br>
+使用 ：w命令是保存<br>
+使用 ：q！命令是强制退出<br>
+使用 ：w +文件名 命令是另存为   </p>
+
+<h1>
+<a id="四查看当前软件的运行情况" class="anchor" href="#%E5%9B%9B%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5" aria-hidden="true"><span class="octicon octicon-link"></span></a>四.查看当前软件的运行情况</h1>
+
+<p>使用service  vsftpd  status 查看状态<br>
+ 使用service  vsftpd  start   开启<br>
+ 使用service  vsftpd  stop    关闭    </p>
+
+<h1>
+<a id="五更改文件的属性" class="anchor" href="#%E4%BA%94%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7" aria-hidden="true"><span class="octicon octicon-link"></span></a>五.更改文件的属性</h1>
+
+<p>使用</p>
+
+<pre><code>    chmod 746 wang.txt     
+     chmod u-x wang.txt     
+     chmod g-x wang.txt 
+     chmod o-x wang.txt 
+     chmod a=rwx wang.txt 
+</code></pre>
+
+<h1>
+<a id="六文件与目录的删除与创建-以及复制与剪切-重命名" class="anchor" href="#%E5%85%AD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9A%84%E5%88%A0%E9%99%A4%E4%B8%8E%E5%88%9B%E5%BB%BA-%E4%BB%A5%E5%8F%8A%E5%A4%8D%E5%88%B6%E4%B8%8E%E5%89%AA%E5%88%87-%E9%87%8D%E5%91%BD%E5%90%8D" aria-hidden="true"><span class="octicon octicon-link"></span></a>六.文件与目录的删除与创建 以及复制与剪切 重命名</h1>
+
+<p>1.1 创建普通文件 使用 touch  + 文件名  默认权限是  -RW-RW-R--</p>
+
+<p>1.2 删除普通文件  使用  rm + 文件名</p>
+
+<p>1.3 复制文件  使用   cp  from.txt  to.txt  (也可以加上路径如 cp /wang/testfrom.txt  ./testto.txt)</p>
+
+<p>1.4 文件的重命名  使用  mv oldfilename.txt    newfilname.txt</p>
+
+<p>1.5 文件的剪切    使用  mv  filename.txt   mydir</p>
+
+<p>2.1 创建一个目录  使用  mkdir  dirname</p>
+
+<p>2.2 删除一个目录  使用   rm -r  dirname  如是一空目录 则可以使用  rmdir  dirname</p>
+
+<p>2.3 目录的复制以及剪切 重命名 都和普通文件类似  只是使用 cp -r  ，mv -r ，rm -r</p>
+
+<h1>
+<a id="七查看文件" class="anchor" href="#%E4%B8%83%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>七.查看文件</h1>
+
+<p>1使用以下命令可以查看文件
+  less   filename.txt</p>
+
+<p>taill  filename.txt  (查看文件后10行) taill -3 filename.txt 表示看后3行    </p>
+
+<p>head   filename.txt(查看文件前10行)<br>
+  head  -3 filename.txt 表示看前3行     </p>
+
+<p>cat    filename.txt   </p>
+
+<p>vi     filename.txt  产生且可以编辑    </p>
+
+<h1>
+<a id="八相关命令杂项" class="anchor" href="#%E5%85%AB%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E6%9D%82%E9%A1%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>八.相关命令杂项</h1>
+
+<ol>
+<li>pwd查看当前路径<br>
+</li>
+<li>ls查看当前所有文件 ll 显示更详细<br>
+</li>
+<li>date查看日期  cal查看日历<br>
+</li>
+<li>jobs查看当前任务（进程）信息  jobsl 所有文件<br>
+</li>
+<li>kill %+进程编号  杀死进程</li>
+<li>pkill +进程名字  杀死进程</li>
+<li>如sleep 300&amp;  在执行的命令后面加上&amp; 意思是当前的进程在后台运行</li>
+<li>fg % +任务号   表示使任务从后台到前台运行</li>
+<li><p>bg % +任务号   表示使任务从前台到后台运行</p></li>
+<li><p>在命令模式下使用 d + G 删除全文</p></li>
+<li>u命令是撤销上一步操作</li>
+<li>shift +6 移至行头（最左边）  shift +4 移至行尾（最右边）</li>
+<li>G最后一行  g最前一行</li>
+<li>文件的链接  in  /user/wang/wb   .  把wb连接到当前目录下 （与cp不同，只会占一个空间）</li>
+<li>wc -l filename.txt  查看当前文件的行数<br>
+</li>
+<li>wc -c filename.txt  查看当前文件的字符数<br>
+</li>
+<li>wc -w filename.txt  查看当前文件的单词数<br>
+19.who（全部的用户）  或是 whoami（自己）  或是 who am  i（自己且很详细） 都是查看当前用户信息<br>
+20.echo str  可以输出字符串str<br>
+</li>
+<li>1. a=10   2. echo $a  会输出结果10<br>
+</li>
+<li>
+<p>ps 查看当前进程   ps - f 查看父进程</p>
+
+<p>23.有关搜索文件  ls | grep filename  (把ls的输出作为grep的输入)
+  grep   “  ”区分大小写
+  grep  -i “  ”不区分大小写
+  grep   -c“  ”行数</p>
+
+<p>24.输出重定向  who &gt;&gt; users （把who的输出输入到users ）</p>
+
+<p>运用：  who &gt;&gt; users<br>
+        wc -l &lt;&lt; users    //输入重定向
+结果为当前用户数    </p>
+</li>
+</ol>
+
+<h1>
+<a id="九增加用户以及删除用户" class="anchor" href="#%E4%B9%9D%E5%A2%9E%E5%8A%A0%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7" aria-hidden="true"><span class="octicon octicon-link"></span></a>九.增加用户以及删除用户</h1>
+
+<p>1.useradd   newuser1  //添加用户    </p>
+
+<p>2.userdelete  oldeuser1 //删除用户   </p>
+
+<p>3.passwd  +用户名
+    根据提示设置密码</p>
+
+<h1>
+<a id="十文件的打包以及压缩--解包--解压" class="anchor" href="#%E5%8D%81%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E5%8E%8B%E7%BC%A9--%E8%A7%A3%E5%8C%85--%E8%A7%A3%E5%8E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>十.文件的打包以及压缩  解包  解压</h1>
+
+<p>方式一分两步：</p>
+
+<ul>
+<li>
+<p>1.打包  在   压缩    </p>
+
+<p>打包：  tar   cfv  backname.tar   + 所要打包的文件 如max.c add.c main.c   //此时会生成以backname.tar包   </p>
+
+<p>解包：  tar   xfv  backname.tar  //此时包里面的东西又会恢复 max.c add.c main.c     </p>
+
+<p>压缩：  gzip    backname.tar //此时会生成以backname.tar.gz   </p>
+
+<p>解压缩：  gzip  -d  backname.tar.gz //此时生成back.tar    </p>
+</li>
+</ul>
+
+<ul>
+<li>
+<p>方式二打包压缩一步完成：</p>
+
+<p>压缩： tar   zcf   my.tgz  +文件名 如main.c max.c add.c //此时生成my.tgz</p>
+
+<p>解压: tar  zxf my.tgz  //此时生成main.c max.c add.c </p>
+</li>
+</ul>
+
+<h1>
+<a id="十一-makefile文件的写法" class="anchor" href="#%E5%8D%81%E4%B8%80-makefile%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%99%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>十一. Makefile文件的写法</h1>
+
+<pre><code>Makefile 文件主要应用于在编写程序时，如果在main.c中调用的函数在其他 .c 文件中，如max.c add.c 。此时如还
+</code></pre>
+
+<p>用以前的编译方法则很慢。     </p>
+
+<ul>
+<li>1.vi  Makefile<br>
+</li>
+<li>2.在其中写如下：<br>
+</li>
+</ul>
+
+<pre><code>all：main（其中main是主程序的名字）
+GDB=-g（此时GDB相当于一个宏）
+main:max.o add.o main.o
+    gcc -o main max.o add.o main.o
+max.o:max.c
+    gcc -c max.c  ${GDB}  (用此种方式引用GDB)
+add.o:add.c
+    gcc -c add.c
+main.o:main.c
+    gcc -c main.c
+clean:
+    rm -rf *.o main
+</code></pre>
+
+<p>注意：</p>
+
+<pre><code> 在该目录下直接输入命令“make”就可以生成执行文件edit。如果要删除执行文件和所有的中间目标文件，那么，只要简单地执行一下“make clean”就可以了。
+</code></pre>
+
+<ul>
+<li>3.以后再编译链接程序时只需  输入 make 就好了此时会生成  main可执行文件</li>
+<li>4.使用 clean 可以对编译链接后的东西进行清除</li>
+</ul>
+
+<h1>
+<a id="十二程序的运行以及调试" class="anchor" href="#%E5%8D%81%E4%BA%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E4%BB%A5%E5%8F%8A%E8%B0%83%E8%AF%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>十二.程序的运行以及调试</h1>
+
+<p>1、分两步进行，先编译再链接：   </p>
+
+<p>gcc –c my.c<br>
+  gcc –o my my.o    </p>
+
+<p>2、编译链接一步完成：   </p>
+
+<p>gcc –o my my.c<br>
+  注意:如果需要调试应该命令后面加上 –g<br>
+  gcc –o my my.c -g   </p>
+
+<p>启动调试 gdb  filename<br>
+ 显示程序 L<br>
+ 加断点 b + 行号<br>
+ 运行 r<br>
+ 查看变量值 p + 变量名<br>
+ 进入函数s<br>
+ 单步执行n<br>
+ 退出调试 quit  </p>
+
+<p>查看断点信息  info  break</p>
+
+<p>删除断点    delete b  n</p>
+
+<p>始终显示变量的值  display  加变量名</p>
+
+<p>取消     undisplay  加变量名</p>
+
+<p>4.查看预编译  编译过后的文件</p>
+
+<p>gcc  -E   预编译
+gcc  -S   编译  产生汇编代码 xxx.s文件  用ls -a  来找</p>
+
+<p>gcc  -O  生成目标文件</p>
+
+<h1>
+<a id="十三网络ip的配置" class="anchor" href="#%E5%8D%81%E4%B8%89%E7%BD%91%E7%BB%9Cip%E7%9A%84%E9%85%8D%E7%BD%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>十三.网络IP的配置</h1>
+
+<ul>
+<li>1.进入root用户<br>
+</li>
+<li>2.cd /etc/sysconfig/network-scripts （进入网卡配置）<br>
+</li>
+<li>3.vi  ifcfg-eth0 </li>
+<li>4.进入之后进行相应的修改</li>
+</ul>
+
+<pre><code> DEVIC=eth0
+ BOOTROTO=static
+ HWADDR=  ...
+ NM_CONTROLLED=yes
+ ONBOOT =yes
+ TYPE=Ethernet
+ ..
+ ..
+ IPADDR=192.168.1.53
+ NETMASK=255.255.255.0
+ GATEWAY=192.168.1.1
+ DNSl=192.168.1.1
+ ...
+ ...
+</code></pre>
+
+<p>保存退出</p>
+
+<ul>
+<li>
+<p>5.service  network  restart  //重启网络服务</p>
+
+<p>ssh运用：
+ service  sshd  status
+ service  sshd  start </p>
+
+<p>然后：
+     方式一： ssh 用户名+@+IP<br>
+             输入密码放可以<br>
+     方式二： ssh +IP  //此时进入root用户
+             输入密码放可以  </p>
+</li>
+</ul>
+
+<h1>
+<a id="欢迎一起交流学习-" class="anchor" href="#%E6%AC%A2%E8%BF%8E%E4%B8%80%E8%B5%B7%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0-" aria-hidden="true"><span class="octicon octicon-link"></span></a>欢迎一起交流学习 </h1>
+
+<p>在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流</p>
+
+<ul>
+<li>邮件(1031379296#qq.com, 把#换成@)</li>
+<li>QQ: 1031379296</li>
+<li>weibo: <a href="http://weibo.com/u/2786211992/home">@王发康</a>
+</li>
+</ul>
+
+<h1>
+<a id="thx" class="anchor" href="#thx" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thx</h1>
+
+<ul>
+<li>chunshengsterATgmail.com</li>
+</ul>
+
+<h1>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h1>
+
+<ul>
+<li>Linux\nginx\golang\c\c++爱好者</li>
+<li>欢迎一起交流  一起学习# </li>
+<li>Others say good and Others good</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("linux base study");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
